@@ -37,7 +37,7 @@ class key:
         else:
             entry.insert(END,self.text)
 
-print(log10(100))
+
 
 purple="#b283ff"
 blue="#6ea4ea"
