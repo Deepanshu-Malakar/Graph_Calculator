@@ -16,11 +16,12 @@ set_appearance_mode("light")
 root=CTk(fg_color="white")
 root.title("Graph Calculator")
 # root.geometry("516x500")
-# pywinstyles.apply_style(root,"aero")
+pywinstyles.apply_style(root,"acrylic")
 
 class key:
     def __init__(self,master,text,color,row,column,text_color="black") -> None:
-        self.button=CTkButton(master,text=text,fg_color=color,command=self.click,corner_radius=0,width=100,text_color=text_color)
+        self.button=CTkButton(master,text=text,fg_color=color,command=self.click,corner_radius=0,width=100,text_color=text_color,bg_color="transparent")
+        # pywinstyles.set_opacity(self.button,0.8)
         self.text=text
         self.button.grid(row=row,column=column)
     def click(self):
@@ -44,14 +45,16 @@ class key:
 purple="#b283ff"
 blue="#6ea4ea"
 
-top_frame=CTkFrame(root,corner_radius=0,border_color="black")
+top_frame=CTkFrame(root,corner_radius=0,border_color="black",fg_color="transparent",bg_color="transparent")
 top_frame.pack(padx=8,pady=8,fill="x")
+pywinstyles.set_opacity(top_frame,0.8)
 
-bottom_frame=CTkFrame(root,corner_radius=0)
+bottom_frame=CTkFrame(root,corner_radius=0,fg_color="transparent",bg_color="transparent")
 bottom_frame.pack(fill="x",padx=8,pady=8)
+pywinstyles.set_opacity(bottom_frame,0.8)
 
 
-fx_btn=CTkButton(top_frame,corner_radius=0,text="F(x) =",width=100,text_color="black")
+fx_btn=CTkButton(top_frame,corner_radius=0,text="F(x) =",width=100,text_color="black",fg_color=blue)
 fx_btn.grid(row=0,column=0)
 
 entry=CTkEntry(top_frame,corner_radius=0,border_color="black",width=300,border_width=1)
@@ -62,7 +65,7 @@ def plot_callback():
     y=eval(query)
     plot(x,y)
 
-plot_btn=CTkButton(top_frame,corner_radius=0,text="Plot Function",width=100,command=plot_callback,text_color="black")
+plot_btn=CTkButton(top_frame,corner_radius=0,text="Plot Function",width=100,command=plot_callback,text_color="black",fg_color=blue)
 plot_btn.grid(row=0,column=2)
 
 log_btn=key(bottom_frame,"log",purple,0,0)
